@@ -1,15 +1,33 @@
-.App {
-
+body {
+  padding: 20px;
+  background-color: #ececec;
 }
 
 .App-header {
-  background-color: #ececec;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: rgb(255, 106, 0);
 }
 
+.chat,
+.basket {
+  width: 50%;
+  margin: 10px;
+  background-color: #e6e6e6;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  width: 90vw;
+  height: 90vh;
+}
+
+.chat-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}

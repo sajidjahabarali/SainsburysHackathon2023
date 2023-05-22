@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import Basket from './components/Basket/Basket';
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         Hacksburys
       </header>
+      <Basket></Basket>
     </div>
   );
 }
