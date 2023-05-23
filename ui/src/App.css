@@ -31,3 +31,8 @@ body {
   right: 10px;
   bottom: 10px;
 }
+
+.basketitem-container {
+  display: flex;
+  justify-content: space-between;
+}
