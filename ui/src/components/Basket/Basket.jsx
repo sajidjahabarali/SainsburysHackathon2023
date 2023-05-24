@@ -36,7 +36,7 @@ export default function Basket() {
 
   const budgetButtons = [1, 3, 5, 10, 20]
 
-  const buttonHandler = (label) => {
+  const dietaryButtonHandler = (label) => {
     // const item = basketItems.find((item) => item.label === label)
 
     switch (label) {
@@ -80,6 +80,22 @@ export default function Basket() {
         break
     }
   }
+
+  const budgetButtonHandler = (budget) => {
+    let total = 0
+    let budgetExceeded = false
+
+    setBasketItems(
+      basketItems.map((item) => {
+        total += item.price
+        if (total > budget) budgetExceeded = true
+
+        if (budgetExceeded) item.hidden = true
+
+        return item
+      })
+    )
+  }
   return (
     <div className="container">
       <div className="chat">
@@ -98,18 +114,34 @@ export default function Basket() {
             }
           }}
         />
-        {dietaryButtons.map((button) => {
-          return (
-            <Button
-              onClick={() => {
-                setPrompts([...prompts, button.prompt])
-                buttonHandler(button.label)
-              }}
-            >
-              {button.label}
-            </Button>
-          )
-        })}
+        <div>
+          {dietaryButtons.map((button) => {
+            return (
+              <Button
+                onClick={() => {
+                  setPrompts([...prompts, button.prompt])
+                  dietaryButtonHandler(button.label)
+                }}
+              >
+                {button.label}
+              </Button>
+            )
+          })}
+        </div>
+        <div>
+          {budgetButtons.map((button) => {
+            return (
+              <Button
+                onClick={() => {
+                  setPrompts([...prompts, `My budget is £${button}`])
+                  budgetButtonHandler(button)
+                }}
+              >
+                £{button}
+              </Button>
+            )
+          })}
+        </div>
 
         <div className="convo">
           {prompts.map((prompt, key) => {
